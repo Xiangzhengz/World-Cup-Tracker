@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shorooq World Cup Sweepstakes Tracker</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Brand System ── */
+    :root {
+      --navy:      #0D3858;  --navy-lt:  #E0EBF4;  --navy-mid: #164A6E;
+      --teal:      #216D6D;  --teal-lt:  #E0F0EF;  --teal-dk:  #144444;
+      --rust:      #AF5643;  --rust-lt:  #F5E8E5;  --rust-dk:  #6F2B1C;
+      --gold:      #C8A96E;  --gold-lt:  rgba(200,169,110,0.15);
+      --purple:    #615579;
+      --sand:      #E9E2D5;  --sand-dk:  #6B5E4A;
+      --bg:        #F2EFE9;
+      --card:      #FFFFFF;
+      --text:      #2C3438;
+      --muted:     #6C7A89;
+      --border:    #E0D9CF;
+
+      /* World Cup theme colors */
+      --pitch:     #2D5016;
+      --pitch-lt:  #4A7C2F;
+      --trophy:    #FFD700;
+
+      --radius:    10px;
+      --shadow:    0 2px 10px rgba(13,56,88,0.08);
+      --gap:       16px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: var(--navy);
+      padding: 0 32px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+    .header-brand { display: flex; align-items: center; gap: 16px; }
+    .brand-wordmark {
+      font-family: 'Josefin Sans', 'Gill Sans', 'Century Gothic', sans-serif;
+      font-weight: 300;
+      font-size: 20px;
+      letter-spacing: 0.52em;
+      text-transform: uppercase;
+      color: #FFF;
+    }
+    .brand-sep { width: 1px; height: 22px; background: rgba(255,255,255,0.15); }
+    .brand-subtitle { color: rgba(255,255,255,0.55); font-size: 13px; }
+    .header-meta { color: rgba(255,255,255,0.45); font-size: 12px; text-align: right; line-height: 1.3; }
+
+    /* ── Stage Switcher ── */
+    .switcher-wrap { background: var(--navy); padding: 0 32px 20px; }
+    .switcher { display: inline-flex; background: rgba(255,255,255,0.08); border-radius: 12px; padding: 4px; gap: 4px; flex-wrap: wrap; }
+    .switch-btn {
+      padding: 10px 20px; border: none; border-radius: 9px; cursor: pointer;
+      font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.55); background: transparent;
+      transition: all 0.2s;
+    }
+    .switch-btn:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.06); }
+    .switch-btn.active { background: #fff; color: var(--navy); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+
+    /* ── Page Container ── */
+    .page { max-width: 1280px; margin: 0 auto; padding: 28px 24px 60px; }
+
+    .section-label {
+      font-size: 11px; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.8px;
+      margin: 32px 0 12px;
+    }
+
+    /* ── KPI Cards ── */
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--gap); margin-bottom: 28px; }
+    .kpi-card {
+      background: var(--card); border-radius: var(--radius);
+      padding: 16px 18px; border-top: 3px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .kpi-card.pitch { border-top-color: var(--pitch); }
+    .kpi-card.trophy { border-top-color: var(--trophy); }
+    .kpi-card.rust { border-top-color: var(--rust); }
+    .kpi-card.teal { border-top-color: var(--teal); }
+    .kpi-label { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }
+    .kpi-value { font-size: 30px; font-weight: 800; color: var(--text); line-height: 1; margin-bottom: 4px; }
+    .kpi-sub { font-size: 12px; color: var(--muted); }
+
+    /* ── Trophy Countdown ── */
+    .trophy-card {
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .trophy-icon { font-size: 48px; margin-bottom: 12px; }
+    .trophy-title { font-size: 18px; font-weight: 800; color: #3C2A00; margin-bottom: 8px; }
+    .trophy-text { font-size: 13px; color: #5C4A00; }
+    .trophy-prize { font-size: 14px; font-weight: 700; color: #3C2A00; margin-top: 12px; }
+
+    /* ── Updates Feed ── */
+    .updates-feed {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      margin-bottom: 28px;
+    }
+    .feed-title { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 12px; }
+    .update-item {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .update-item:last-child { border-bottom: none; }
+    .update-text { font-size: 13px; }
+    .update-time { font-size: 11px; color: var(--muted); }
+    .update-badge {
+      display: inline-block; padding: 3px 8px; border-radius: 20px;
+      font-size: 10px; font-weight: 700; margin-left: 8px;
+    }
+    .badge-out { background: var(--rust-lt); color: var(--rust-dk); }
+    .badge-win { background: var(--teal-lt); color: var(--teal-dk); }
+
+    /* ── Data Table ── */
+    .table-wrap { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 800px; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); font-size: 13px; white-space: nowrap; }
+    th { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; background: var(--bg); position: sticky; top: 64px; z-index: 10; }
+
+    /* Column widths */
+    th:nth-child(1), td:nth-child(1) { width: 60px; }  /* Rank */
+    th:nth-child(2), td:nth-child(2) { width: 100px; } /* Participant */
+    th:nth-child(3), td:nth-child(3) { width: 180px; white-space: normal; } /* Country */
+    th:nth-child(4), td:nth-child(4) { width: 100px; } /* Status */
+    th:nth-child(5), td:nth-child(5) { width: 140px; } /* Stage */
+    th:nth-child(6), td:nth-child(6) { width: 80px; text-align: center; }  /* Wins */
+    th:nth-child(7), td:nth-child(7) { width: 80px; text-align: center; }  /* Losses */
+
+    tr:hover td { background: #FAFAF8; }
+    tbody tr { cursor: pointer; }
+
+    /* Country-specific row colors */
+    .flag { font-size: 20px; margin-right: 8px; }
+    .participant-cell { font-weight: 600; }
+    .status-pill {
+      display: inline-block; padding: 3px 10px; border-radius: 20px;
+      font-size: 11px; font-weight: 700;
+    }
+    .s-in { background: var(--teal-lt); color: var(--teal-dk); }
+    .s-out { background: var(--rust-lt); color: var(--rust-dk); }
+    .s-champion { background: var(--trophy); color: #3C2A00; }
+
+    .stage-badge { font-size: 11px; color: var(--muted); }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 28px 0 0;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .page { padding: 16px 14px 40px; }
+      .header { padding: 0 16px; }
+      .switcher-wrap { padding: 0 16px 16px; }
+      .switch-btn { padding: 8px 12px; font-size: 11px; }
+      table { font-size: 12px; }
+      th, td { padding: 8px 10px; }
+    }
+
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-brand">
+      <span class="brand-wordmark">Shorooq</span>
+      <div class="brand-sep"></div>
+      <span class="brand-subtitle">World Cup Sweepstakes</span>
+    </div>
+    <div class="header-meta" id="header-meta">
+      Tournament in Progress<br>
+      Last Updated: June 11, 2026
+    </div>
+  </div>
+
+  <!-- Stage Switcher -->
+  <div class="switcher-wrap">
+    <div class="switcher">
+      <button class="switch-btn active" data-stage="all">All Teams</button>
+      <button class="switch-btn" data-stage="group">Group Stage</button>
+      <button class="switch-btn" data-stage="r16">Round of 16</button>
+      <button class="switch-btn" data-stage="quarters">Quarter Finals</button>
+      <button class="switch-btn" data-stage="semis">Semi Finals</button>
+      <button class="switch-btn" data-stage="final">Final</button>
+    </div>
+  </div>
+
+  <!-- Page Content -->
+  <div class="page">
+
+    <!-- Trophy Countdown -->
+    <div class="trophy-card">
+      <div class="trophy-icon">🏆</div>
+      <div class="trophy-title">Road to Victory</div>
+      <div class="trophy-text">20 teams entered • Winner takes all</div>
+      <div class="trophy-prize">🎁 Prize: Team Dinner + Trophy 🎁</div>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="kpi-grid">
+      <div class="kpi-card pitch">
+        <div class="kpi-label">⚽ Teams Still In</div>
+        <div class="kpi-value" id="kpi-in">20</div>
+        <div class="kpi-sub">competing for the trophy</div>
+      </div>
+      <div class="kpi-card rust">
+        <div class="kpi-label">❌ Teams Eliminated</div>
+        <div class="kpi-value" id="kpi-out">0</div>
+        <div class="kpi-sub">out of the tournament</div>
+      </div>
+      <div class="kpi-card teal">
+        <div class="kpi-label">🎯 Current Leader</div>
+        <div class="kpi-value" id="kpi-leader">TBD</div>
+        <div class="kpi-sub">furthest in tournament</div>
+      </div>
+      <div class="kpi-card trophy">
+        <div class="kpi-label">🏆 Champion</div>
+        <div class="kpi-value" id="kpi-champion">—</div>
+        <div class="kpi-sub">winner announced soon</div>
+      </div>
+    </div>
+
+    <!-- Recent Updates Feed -->
+    <div class="updates-feed">
+      <div class="feed-title">📰 Recent Updates</div>
+      <div id="updates-container">
+        <div class="update-item">
+          <div class="update-text">
+            🎉 Tournament has begun! All 20 teams are in the competition.
+          </div>
+          <div class="update-time">Just now</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">⚽ Sweepstakes Leaderboard</div>
+
+    <!-- Participants Table -->
+    <div class="table-wrap">
+      <table id="participants-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Participant</th>
+            <th>Country</th>
+            <th>Status</th>
+            <th>Current Stage</th>
+            <th>Wins</th>
+            <th>Losses</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <strong>Shorooq Partners</strong> · World Cup Sweepstakes Tracker · June 2026<br>
+      Private &amp; Confidential · Internal Use Only · Generated June 11, 2026
+    </div>
+
+  </div>
+
+  <script>
+    // ═══════════════════════════════════════════════════════════════
+    // DATA STRUCTURE — Edit this section to update the dashboard
+    // ═══════════════════════════════════════════════════════════════
+
+    const PARTICIPANTS = [
+      { initials: 'TB', country: 'Portugal', flag: '🇵🇹', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'SS', country: 'Mexico', flag: '🇲🇽', status: 'in', stage: 'group', wins: 1, losses: 0 },
+      { initials: 'FNK', country: 'France', flag: '🇫🇷', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'MA', country: 'Uruguay', flag: '🇺🇾', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'MM', country: 'Australia', flag: '🇦🇺', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'MK', country: 'Brazil', flag: '🇧🇷', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'TH', country: 'Netherlands', flag: '🇳🇱', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'TO', country: 'Belgium', flag: '🇧🇪', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'MZ', country: 'Ecuador', flag: '🇪🇨', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'KS', country: 'Argentina', flag: '🇦🇷', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'AE', country: 'Colombia', flag: '🇨🇴', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'NK', country: 'Morocco', flag: '🇲🇦', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'HK', country: 'Algeria', flag: '🇩🇿', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'RAK', country: 'USA', flag: '🇺🇸', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'JB', country: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'XZ', country: 'Korea', flag: '🇰🇷', status: 'in', stage: 'group', wins: 2, losses: 0 },
+      { initials: 'AH', country: 'Spain', flag: '🇪🇸', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'TD', country: 'Germany', flag: '🇩🇪', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'KG', country: 'Turkiye', flag: '🇹🇷', status: 'in', stage: 'group', wins: 0, losses: 0 },
+      { initials: 'OZ', country: 'Austria', flag: '🇦🇹', status: 'in', stage: 'group', wins: 0, losses: 0 }
+    ];
+
+    // Status: 'in', 'out', 'champion'
+    // Stage: 'group', 'r16', 'quarters', 'semis', 'final', 'winner'
+
+    const UPDATES = [
+      { text: '⚽ SS (Mexico 🇲🇽) wins vs South Africa 2-0!', time: 'June 12', type: 'win' },
+      { text: '⚽ XZ (Korea 🇰🇷) wins vs Czechia 2-1!', time: 'June 12', type: 'win' },
+      { text: '🎉 Tournament has begun! All 20 teams are in the competition.', time: 'June 11', type: 'info' }
+    ];
+
+    // ═══════════════════════════════════════════════════════════════
+    // RENDER LOGIC — You don't need to edit below unless customizing
+    // ═══════════════════════════════════════════════════════════════
+
+    let currentStage = 'all';
+
+    const STAGE_LABELS = {
+      'group': 'Group Stage',
+      'r16': 'Round of 16',
+      'quarters': 'Quarter Finals',
+      'semis': 'Semi Finals',
+      'final': 'Final',
+      'winner': '🏆 Champion'
+    };
+
+    function renderKPIs() {
+      const teamsIn = PARTICIPANTS.filter(p => p.status === 'in').length;
+      const teamsOut = PARTICIPANTS.filter(p => p.status === 'out').length;
+      const champion = PARTICIPANTS.find(p => p.status === 'champion');
+
+      // Find leader (furthest stage + most wins)
+      const stageOrder = ['group', 'r16', 'quarters', 'semis', 'final', 'winner'];
+      const sorted = [...PARTICIPANTS].sort((a, b) => {
+        const aIdx = stageOrder.indexOf(a.stage);
+        const bIdx = stageOrder.indexOf(b.stage);
+        if (aIdx !== bIdx) return bIdx - aIdx;
+        return b.wins - a.wins;
+      });
+      const leader = sorted[0];
+
+      document.getElementById('kpi-in').textContent = teamsIn;
+      document.getElementById('kpi-out').textContent = teamsOut;
+      document.getElementById('kpi-leader').textContent = leader ? `${leader.initials} (${leader.country})` : 'TBD';
+      document.getElementById('kpi-champion').textContent = champion ? `${champion.initials} (${champion.country})` : '—';
+    }
+
+    function renderUpdates() {
+      const container = document.getElementById('updates-container');
+      if (UPDATES.length === 0) {
+        container.innerHTML = '<div class="update-item"><div class="update-text">No updates yet.</div></div>';
+        return;
+      }
+
+      container.innerHTML = UPDATES.slice(0, 5).map(u => `
+        <div class="update-item">
+          <div class="update-text">${u.text}</div>
+          <div class="update-time">${u.time}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderTable() {
+      const filtered = currentStage === 'all'
+        ? PARTICIPANTS
+        : PARTICIPANTS.filter(p => p.stage === currentStage);
+
+      // Sort by stage advancement, then wins
+      const stageOrder = ['winner', 'final', 'semis', 'quarters', 'r16', 'group'];
+      const sorted = [...filtered].sort((a, b) => {
+        // Status priority: champion > in > out
+        if (a.status === 'champion' && b.status !== 'champion') return -1;
+        if (b.status === 'champion' && a.status !== 'champion') return 1;
+
+        const aIdx = stageOrder.indexOf(a.stage);
+        const bIdx = stageOrder.indexOf(b.stage);
+        if (aIdx !== bIdx) return aIdx - bIdx;
+
+        if (b.wins !== a.wins) return b.wins - a.wins;
+        return a.losses - b.losses;
+      });
+
+      const tbody = document.getElementById('table-body');
+      tbody.innerHTML = sorted.map((p, idx) => {
+        const statusClass = p.status === 'champion' ? 's-champion' : p.status === 'in' ? 's-in' : 's-out';
+        const statusText = p.status === 'champion' ? '🏆 Champion' : p.status === 'in' ? '✅ In' : '❌ Out';
+
+        return `
+          <tr>
+            <td><strong>#${idx + 1}</strong></td>
+            <td class="participant-cell">${p.initials}</td>
+            <td><span class="flag">${p.flag}</span>${p.country}</td>
+            <td><span class="status-pill ${statusClass}">${statusText}</span></td>
+            <td><span class="stage-badge">${STAGE_LABELS[p.stage] || p.stage}</span></td>
+            <td><strong>${p.wins}</strong></td>
+            <td>${p.losses}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function init() {
+      renderKPIs();
+      renderUpdates();
+      renderTable();
+
+      // Stage switcher
+      document.querySelectorAll('.switch-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.switch-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentStage = btn.dataset.stage;
+          renderTable();
+        });
+      });
+    }
+
+    init();
+  </script>
+
+</body>
+</html>

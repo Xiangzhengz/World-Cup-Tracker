@@ -15,14 +15,14 @@ const COUNTRY_MAP = {
   'ecuador': 'MZ', 'argentina': 'KS', 'colombia': 'AE', 'morocco': 'NK',
   'algeria': 'HK', 'usa': 'RAK', 'united states': 'RAK', 'england': 'JB',
   'korea': 'XZ', 'south korea': 'XZ', 'spain': 'AH', 'germany': 'TD',
-  'turkiye': 'KG', 'turkey': 'KG', 'austria': 'OZ', 'croatia': 'ST'
+  'turkiye': 'KG', 'turkey': 'KG', 'austria': 'OZ', 'croatia': 'ST', 'senegal': 'MS'
 };
 
 const COUNTRY_FLAGS = {
   'TB': '🇵🇹', 'SS': '🇲🇽', 'FNK': '🇫🇷', 'MA': '🇺🇾', 'MM': '🇦🇺',
   'MK': '🇧🇷', 'TH': '🇳🇱', 'TO': '🇧🇪', 'MZ': '🇪🇨', 'KS': '🇦🇷',
   'AE': '🇨🇴', 'NK': '🇲🇦', 'HK': '🇩🇿', 'RAK': '🇺🇸', 'JB': '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-  'XZ': '🇰🇷', 'AH': '🇪🇸', 'TD': '🇩🇪', 'KG': '🇹🇷', 'OZ': '🇦🇹', 'ST': '🇭🇷'
+  'XZ': '🇰🇷', 'AH': '🇪🇸', 'TD': '🇩🇪', 'KG': '🇹🇷', 'OZ': '🇦🇹', 'ST': '🇭🇷', 'MS': '🇸🇳'
 };
 
 // Get today's date from args (passed in) or use placeholder

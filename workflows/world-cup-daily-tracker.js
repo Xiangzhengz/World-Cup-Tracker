@@ -126,6 +126,7 @@ const PARSE_SCHEMA = {
           initials: { type: 'string', description: 'Participant initials (e.g., XZ, MK, FNK)' },
           country: { type: 'string', description: 'Country name for reference' },
           wins_delta: { type: 'number', description: 'Number of wins to add (0, 1, 2, etc.)' },
+          draws_delta: { type: 'number', description: 'Number of draws to add (0, 1, etc.)' },
           losses_delta: { type: 'number', description: 'Number of losses to add' },
           new_stage: { type: 'string', description: 'New tournament stage if advanced: r16, quarters, semis, final' },
           new_status: { type: 'string', description: 'New status: in, out, champion' }
@@ -140,7 +141,7 @@ const PARSE_SCHEMA = {
         properties: {
           text: { type: 'string', description: 'Update text with emoji (e.g., "⚽ XZ (Korea 🇰🇷) wins vs Germany 2-1!")' },
           time: { type: 'string', description: 'Timestamp (e.g., "June 12")' },
-          type: { type: 'string', description: 'win, loss, out, or info' }
+          type: { type: 'string', description: 'win, draw, loss, out, or info' }
         },
         required: ['text', 'time', 'type']
       }
@@ -166,7 +167,7 @@ ${JSON.stringify(COUNTRY_FLAGS, null, 2)}
 **Instructions:**
 1. For each match result, identify the winner and loser
 2. Map country names to participant initials using COUNTRY_MAP (case-insensitive)
-3. Calculate wins_delta and losses_delta for each participant
+3. Calculate wins_delta, draws_delta, and losses_delta for each participant (draws = matches that ended in a tie)
 4. If a team was eliminated, set new_status: "out"
 5. If a team advanced, set new_stage to the stage they advanced to
 6. If a team won the championship, set new_status: "champion" and new_stage: "winner"

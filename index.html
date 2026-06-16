@@ -317,28 +317,28 @@
     // ═══════════════════════════════════════════════════════════════
 
     const PARTICIPANTS = [
-      { initials: 'TB', country: 'Portugal', flag: '🇵🇹', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: null },
-      { initials: 'SS', country: 'Mexico', flag: '🇲🇽', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: null },
-      { initials: 'FNK', country: 'France', flag: '🇫🇷', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: null },
-      { initials: 'MA', country: 'Uruguay', flag: '🇺🇾', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: null },
-      { initials: 'MM', country: 'Australia', flag: '🇦🇺', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: null },
-      { initials: 'MK', country: 'Brazil', flag: '🇧🇷', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: null },
-      { initials: 'TH', country: 'Netherlands', flag: '🇳🇱', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: null },
-      { initials: 'TO', country: 'Belgium', flag: '🇧🇪', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: null },
-      { initials: 'MZ', country: 'Ecuador', flag: '🇪🇨', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 1, prob: null },
-      { initials: 'KS', country: 'Argentina', flag: '🇦🇷', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: null },
-      { initials: 'AE', country: 'Colombia', flag: '🇨🇴', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: null },
-      { initials: 'NK', country: 'Morocco', flag: '🇲🇦', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: null },
-      { initials: 'HK', country: 'Algeria', flag: '🇩🇿', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: null },
-      { initials: 'RAK', country: 'USA', flag: '🇺🇸', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: null },
-      { initials: 'JB', country: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: null },
-      { initials: 'XZ', country: 'Korea', flag: '🇰🇷', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: null },
-      { initials: 'AH', country: 'Spain', flag: '🇪🇸', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: null },
-      { initials: 'TD', country: 'Germany', flag: '🇩🇪', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: null },
-      { initials: 'KG', country: 'Turkiye', flag: '🇹🇷', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 1, prob: null },
-      { initials: 'OZ', country: 'Austria', flag: '🇦🇹', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: null },
-      { initials: 'ST', country: 'Croatia', flag: '🇭🇷', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: null },
-      { initials: 'MS', country: 'Senegal', flag: '🇸🇳', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: null }
+      { initials: 'TB', country: 'Portugal', flag: '🇵🇹', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: 11.1 },
+      { initials: 'SS', country: 'Mexico', flag: '🇲🇽', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 1.8 },
+      { initials: 'FNK', country: 'France', flag: '🇫🇷', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: 18.1 },
+      { initials: 'MA', country: 'Uruguay', flag: '🇺🇾', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 0.9 },
+      { initials: 'MM', country: 'Australia', flag: '🇦🇺', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 0.3 },
+      { initials: 'MK', country: 'Brazil', flag: '🇧🇷', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 6.7 },
+      { initials: 'TH', country: 'Netherlands', flag: '🇳🇱', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 4.5 },
+      { initials: 'TO', country: 'Belgium', flag: '🇧🇪', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 1.8 },
+      { initials: 'MZ', country: 'Ecuador', flag: '🇪🇨', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 1, prob: 0.3 },
+      { initials: 'KS', country: 'Argentina', flag: '🇦🇷', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: 8.4 },
+      { initials: 'AE', country: 'Colombia', flag: '🇨🇴', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: 1.6 },
+      { initials: 'NK', country: 'Morocco', flag: '🇲🇦', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 2.2 },
+      { initials: 'HK', country: 'Algeria', flag: '🇩🇿', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: 0.2 },
+      { initials: 'RAK', country: 'USA', flag: '🇺🇸', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 3.4 },
+      { initials: 'JB', country: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: 10.4 },
+      { initials: 'XZ', country: 'Korea', flag: '🇰🇷', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 0.5 },
+      { initials: 'AH', country: 'Spain', flag: '🇪🇸', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 14.6 },
+      { initials: 'TD', country: 'Germany', flag: '🇩🇪', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 6.2 },
+      { initials: 'KG', country: 'Turkiye', flag: '🇹🇷', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 1, prob: 0.5 },
+      { initials: 'OZ', country: 'Austria', flag: '🇦🇹', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: 0.3 },
+      { initials: 'ST', country: 'Croatia', flag: '🇭🇷', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: 0.8 },
+      { initials: 'MS', country: 'Senegal', flag: '🇸🇳', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 0, prob: 0.6 }
     ];
 
     // Status: 'in', 'out', 'champion'
@@ -487,23 +487,25 @@
         const data = await resp.json();
         const markets = data.markets || [];
 
+        let updated = false;
         markets.forEach(m => {
-          // Title: "Will France win the 2026 Men's World Cup?"
-          const match = (m.title || '').match(/Will (.+?) win the 2026/i);
-          if (!match) return;
-          const countryKey = match[1].toLowerCase().trim();
-          const initials = KALSHI_MAP[countryKey];
+          // Use yes_sub_title (clean country name) for matching
+          const sub = (m.yes_sub_title || '').trim();
+          const initials = KALSHI_MAP[sub.toLowerCase()] || KALSHI_MAP[sub];
           if (!initials) return;
           const participant = PARTICIPANTS.find(p => p.initials === initials);
           if (!participant) return;
-          // yes_bid/yes_ask are integer cents (0–100) on Kalshi
-          const mid = (m.yes_bid + m.yes_ask) / 2;
-          participant.prob = Math.round(mid * 10) / 10;
+          // Prices are dollar strings (0.18 = 18%). Use mid of bid/ask; fall back to last_price.
+          const bid = parseFloat(m.yes_bid_dollars || 0) * 100;
+          const ask = parseFloat(m.yes_ask_dollars || 0) * 100;
+          const last = parseFloat(m.last_price_dollars || 0) * 100;
+          participant.prob = Math.round(((bid + ask > 0) ? (bid + ask) / 2 : last) * 10) / 10;
+          updated = true;
         });
 
-        renderTable();
+        if (updated) renderTable();
       } catch (e) {
-        // Silently fail — Win % column shows "…" until odds load
+        // CORS blocked from browser — pre-populated values from daily task are shown
       }
     }
 

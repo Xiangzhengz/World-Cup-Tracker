@@ -426,6 +426,19 @@
         return a.losses - b.losses;
       });
 
+      // Compute tied ranks: same stage+wins+losses = same rank
+      const ranks = [];
+      sorted.forEach((p, idx) => {
+        if (idx === 0) { ranks.push(1); return; }
+        const prev = sorted[idx - 1];
+        const sameRank =
+          p.status === prev.status &&
+          p.stage === prev.stage &&
+          p.wins === prev.wins &&
+          p.losses === prev.losses;
+        ranks.push(sameRank ? ranks[idx - 1] : idx + 1);
+      });
+
       const tbody = document.getElementById('table-body');
       tbody.innerHTML = sorted.map((p, idx) => {
         const statusClass = p.status === 'champion' ? 's-champion' : p.status === 'in' ? 's-in' : 's-out';
@@ -433,7 +446,7 @@
 
         return `
           <tr>
-            <td><strong>#${idx + 1}</strong></td>
+            <td><strong>#${ranks[idx]}</strong></td>
             <td class="participant-cell">${p.initials}</td>
             <td><span class="flag">${p.flag}</span>${p.country}</td>
             <td><span class="status-pill ${statusClass}">${statusText}</span></td>

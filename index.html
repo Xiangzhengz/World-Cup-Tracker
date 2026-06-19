@@ -215,7 +215,7 @@
     </div>
     <div class="header-meta" id="header-meta">
       Tournament in Progress<br>
-      Last Updated: June 18, 2026
+      Last Updated: June 19, 2026
     </div>
   </div>
 
@@ -317,23 +317,23 @@
     // ═══════════════════════════════════════════════════════════════
 
     const PARTICIPANTS = [
-      { initials: 'TB', country: 'Portugal', flag: '🇵🇹', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 11.5 },
-      { initials: 'SS', country: 'Mexico', flag: '🇲🇽', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 1.8 },
-      { initials: 'FNK', country: 'France', flag: '🇫🇷', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 18.0 },
-      { initials: 'MA', country: 'Uruguay', flag: '🇺🇾', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 0.9 },
+      { initials: 'TB', country: 'Portugal', flag: '🇵🇹', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 9.5 },
+      { initials: 'SS', country: 'Mexico', flag: '🇲🇽', status: 'in', stage: 'r16', wins: 2, draws: 0, losses: 0, prob: 2.5 },
+      { initials: 'FNK', country: 'France', flag: '🇫🇷', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 18.5 },
+      { initials: 'MA', country: 'Uruguay', flag: '🇺🇾', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 1.2 },
       { initials: 'MM', country: 'Australia', flag: '🇦🇺', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 0.3 },
       { initials: 'MK', country: 'Brazil', flag: '🇧🇷', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 6.7 },
-      { initials: 'TH', country: 'Netherlands', flag: '🇳🇱', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 5.0 },
-      { initials: 'TO', country: 'Belgium', flag: '🇧🇪', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 1.8 },
+      { initials: 'TH', country: 'Netherlands', flag: '🇳🇱', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 5.7 },
+      { initials: 'TO', country: 'Belgium', flag: '🇧🇪', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 2.8 },
       { initials: 'MZ', country: 'Ecuador', flag: '🇪🇨', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 1, prob: 0.3 },
-      { initials: 'KS', country: 'Argentina', flag: '🇦🇷', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 8.5 },
-      { initials: 'AE', country: 'Colombia', flag: '🇨🇴', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 1.6 },
-      { initials: 'NK', country: 'Morocco', flag: '🇲🇦', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 2.3 },
+      { initials: 'KS', country: 'Argentina', flag: '🇦🇷', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 11.4 },
+      { initials: 'AE', country: 'Colombia', flag: '🇨🇴', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 2.8 },
+      { initials: 'NK', country: 'Morocco', flag: '🇲🇦', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 2.4 },
       { initials: 'HK', country: 'Algeria', flag: '🇩🇿', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 1, prob: 0.1 },
       { initials: 'RAK', country: 'USA', flag: '🇺🇸', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 3.5 },
-      { initials: 'JB', country: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 10.0 },
-      { initials: 'XZ', country: 'Korea', flag: '🇰🇷', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 0.5 },
-      { initials: 'AH', country: 'Spain', flag: '🇪🇸', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 14.6 },
+      { initials: 'JB', country: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 12.9 },
+      { initials: 'XZ', country: 'Korea', flag: '🇰🇷', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 1, prob: 0.5 },
+      { initials: 'AH', country: 'Spain', flag: '🇪🇸', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 13.7 },
       { initials: 'TD', country: 'Germany', flag: '🇩🇪', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 6.2 },
       { initials: 'KG', country: 'Turkiye', flag: '🇹🇷', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 1, prob: 0.5 },
       { initials: 'OZ', country: 'Austria', flag: '🇦🇹', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 0.4 },
@@ -345,6 +345,8 @@
     // Stage: 'group', 'r16', 'quarters', 'semis', 'final', 'winner'
 
     const UPDATES = [
+      { text: '⚽ SS (Mexico 🇲🇽) beats South Korea 1-0 (Romo 50\') — clinches Group A, ADVANCES to Round of 16!', time: 'June 18', type: 'win' },
+      { text: '⚽ XZ (South Korea 🇰🇷) falls 0-1 to Mexico — first group stage loss, still competing', time: 'June 18', type: 'loss' },
       { text: '⚽ JB (England 🏴󠁧󠁢󠁥󠁮󠁧󠁿) defeats Croatia 4-2 in stunning Group L opener!', time: 'June 17', type: 'win' },
       { text: '❌ ST (Croatia 🇭🇷) falls to England 2-4 in Group L opener', time: 'June 17', type: 'loss' },
       { text: '⚽ AE (Colombia 🇨🇴) wins Group K opener 2-1 vs Uzbekistan!', time: 'June 17', type: 'win' },

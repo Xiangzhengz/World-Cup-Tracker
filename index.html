@@ -215,7 +215,7 @@
     </div>
     <div class="header-meta" id="header-meta">
       Tournament in Progress<br>
-      Last Updated: June 22, 2026
+      Last Updated: June 23, 2026
     </div>
   </div>
 
@@ -319,32 +319,37 @@
     const PARTICIPANTS = [
       { initials: 'TB', country: 'Portugal', flag: '🇵🇹', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 0, prob: 7.9 },
       { initials: 'SS', country: 'Mexico', flag: '🇲🇽', status: 'in', stage: 'r16', wins: 2, draws: 0, losses: 0, prob: 2.5 },
-      { initials: 'FNK', country: 'France', flag: '🇫🇷', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 19.3 },
+      { initials: 'FNK', country: 'France', flag: '🇫🇷', status: 'in', stage: 'r16', wins: 2, draws: 0, losses: 0, prob: 19.3 },
       { initials: 'MA', country: 'Uruguay', flag: '🇺🇾', status: 'in', stage: 'group', wins: 0, draws: 2, losses: 0, prob: 1.2 },
       { initials: 'MM', country: 'Australia', flag: '🇦🇺', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 1, prob: 0.3 },
       { initials: 'MK', country: 'Brazil', flag: '🇧🇷', status: 'in', stage: 'group', wins: 1, draws: 1, losses: 0, prob: 6.9 },
       { initials: 'TH', country: 'Netherlands', flag: '🇳🇱', status: 'in', stage: 'group', wins: 1, draws: 1, losses: 0, prob: 5.7 },
       { initials: 'TO', country: 'Belgium', flag: '🇧🇪', status: 'in', stage: 'group', wins: 0, draws: 2, losses: 0, prob: 2.8 },
       { initials: 'MZ', country: 'Ecuador', flag: '🇪🇨', status: 'in', stage: 'group', wins: 0, draws: 1, losses: 1, prob: 0.3 },
-      { initials: 'KS', country: 'Argentina', flag: '🇦🇷', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 10.9 },
+      { initials: 'KS', country: 'Argentina', flag: '🇦🇷', status: 'in', stage: 'r16', wins: 2, draws: 0, losses: 0, prob: 10.9 },
       { initials: 'AE', country: 'Colombia', flag: '🇨🇴', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 2.8 },
       { initials: 'NK', country: 'Morocco', flag: '🇲🇦', status: 'in', stage: 'group', wins: 1, draws: 1, losses: 0, prob: 2.4 },
-      { initials: 'HK', country: 'Algeria', flag: '🇩🇿', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 1, prob: 0.1 },
+      { initials: 'HK', country: 'Algeria', flag: '🇩🇿', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 1, prob: 0.1 },
       { initials: 'RAK', country: 'USA', flag: '🇺🇸', status: 'in', stage: 'group', wins: 2, draws: 0, losses: 0, prob: 5.5 },
       { initials: 'JB', country: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 12.9 },
       { initials: 'XZ', country: 'Korea', flag: '🇰🇷', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 1, prob: 0.5 },
       { initials: 'AH', country: 'Spain', flag: '🇪🇸', status: 'in', stage: 'r16', wins: 1, draws: 1, losses: 0, prob: 13.7 },
       { initials: 'TD', country: 'Germany', flag: '🇩🇪', status: 'in', stage: 'r16', wins: 2, draws: 0, losses: 0, prob: 6.2 },
       { initials: 'KG', country: 'Turkiye', flag: '🇹🇷', status: 'out', stage: 'group', wins: 0, draws: 0, losses: 2, prob: 0.5 },
-      { initials: 'OZ', country: 'Austria', flag: '🇦🇹', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 0, prob: 0.4 },
+      { initials: 'OZ', country: 'Austria', flag: '🇦🇹', status: 'in', stage: 'group', wins: 1, draws: 0, losses: 1, prob: 0.4 },
       { initials: 'ST', country: 'Croatia', flag: '🇭🇷', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 1, prob: 0.8 },
-      { initials: 'MS', country: 'Senegal', flag: '🇸🇳', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 1, prob: 0.4 }
+      { initials: 'MS', country: 'Senegal', flag: '🇸🇳', status: 'in', stage: 'group', wins: 0, draws: 0, losses: 2, prob: 0.4 }
     ];
 
     // Status: 'in', 'out', 'champion'
     // Stage: 'group', 'r16', 'quarters', 'semis', 'final', 'winner'
 
     const UPDATES = [
+      { text: '⚽ HK (Algeria 🇩🇿) beats Jordan 2-1 — Benbouali equaliser, Gouiri late winner! Algeria stays alive!', time: 'June 22', type: 'win' },
+      { text: '❌ MS (Senegal 🇸🇳) loses 2-3 to Norway — Haaland brace — second group stage loss', time: 'June 22', type: 'loss' },
+      { text: '⚽ FNK (France 🇫🇷) crushes Iraq 3-0 — Mbappé brace — ADVANCES to Round of 16!', time: 'June 22', type: 'win' },
+      { text: '❌ OZ (Austria 🇦🇹) loses 0-2 to Argentina — Messi brace — first group loss', time: 'June 22', type: 'loss' },
+      { text: '⚽ KS (Argentina 🇦🇷) beats OZ (Austria 🇦🇹) 2-0 — Messi makes history (18 WC goals)! ADVANCES to Round of 16!', time: 'June 22', type: 'win' },
       { text: '⚽ AH (Spain 🇪🇸) crushes Saudi Arabia 4-0 — ADVANCES to Round of 16!', time: 'June 21', type: 'win' },
       { text: '🤝 TO (Belgium 🇧🇪) held 0-0 by Iran in Group G', time: 'June 21', type: 'info' },
       { text: '🤝 MZ (Ecuador 🇪🇨) held 0-0 by Curaçao in Group E', time: 'June 21', type: 'info' },
